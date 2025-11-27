@@ -36,9 +36,7 @@ class Product(models.Model):
         blank=True,
         related_name="products",
     )
-    price = models.FloatField(
-        verbose_name="Цена", help_text="Введите цену за покупку"
-    )
+    price = models.FloatField(verbose_name="Цена", help_text="Введите цену за покупку")
     created_at = models.DateField(verbose_name="Дата создания")
     updated_at = models.DateField(verbose_name="Дата последнего изменения")
 
