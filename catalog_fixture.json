@@ -1,0 +1,78 @@
+[
+{
+    "model": "catalog.category",
+    "pk": 1,
+    "fields": {
+        "name": "смартфоны",
+        "description": "Умные телефоны"
+    }
+},
+{
+    "model": "catalog.category",
+    "pk": 2,
+    "fields": {
+        "name": "Телевизоры",
+        "description": "Приёмник телевизионных сигналов изображения и звука, отображающий их на экране и с помощью динамиков."
+    }
+},
+{
+    "model": "catalog.category",
+    "pk": 3,
+    "fields": {
+        "name": "Пылесосы",
+        "description": "Агрегат для уборки пыли и загрязнений с поверхностей посредством всасывания потоком воздуха"
+    }
+},
+{
+    "model": "catalog.product",
+    "pk": 1,
+    "fields": {
+        "name": "Samsung Galaxy S25",
+        "description": "Дисплей: 6.9\", 3120x1440, Dynamic AMOLED 2X, 120 Гц\r\nСвязь: 3G, 4G, 5G, eSIM, Nano-SIM\r\nПроцессор: Qualcomm Snapdragon 8 Elite for Galaxy, 8 x 4.47 ГГц\r\nПамять (ОЗУ/ПЗУ): 12 ГБ / 256 ГБ\r\nКамера: 200+50+50+10 Мп\r\nПитание: 5000 мА*ч (Li-Ion)",
+        "photo": "products/photo/samsung.jpg",
+        "category": 1,
+        "price": 108999.0,
+        "created_at": "2025-11-27",
+        "updated_at": "2025-11-27"
+    }
+},
+{
+    "model": "catalog.product",
+    "pk": 4,
+    "fields": {
+        "name": "iFFALCON 55U85",
+        "description": "55' черный Mini LED, QLED, 4K UltraHD, Wi-Fi, 144 Гц, Google TV, HDMI х 4, USB х 1 шт",
+        "photo": "",
+        "category": 2,
+        "price": 45999.0,
+        "created_at": "2025-11-27",
+        "updated_at": "2025-11-27"
+    }
+},
+{
+    "model": "catalog.product",
+    "pk": 6,
+    "fields": {
+        "name": "Samsung SC4581",
+        "description": "черный 2000 Вт, уборка: сухая, пылесборник - контейнер, 1.3 л",
+        "photo": "",
+        "category": 3,
+        "price": 8899.0,
+        "created_at": "2025-11-27",
+        "updated_at": "2025-11-27"
+    }
+},
+{
+    "model": "catalog.product",
+    "pk": 7,
+    "fields": {
+        "name": "Philips FC9734/01",
+        "description": "фиолетовый 2100 Вт, уборка: сухая, пылесборник - контейнер, 2 л",
+        "photo": "",
+        "category": 3,
+        "price": 20999.0,
+        "created_at": "2025-11-27",
+        "updated_at": "2025-11-27"
+    }
+}
+]
