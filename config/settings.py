@@ -138,3 +138,18 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 MEDIA_URL = "/media/"
 
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+
+# Запрещенные слова
+FORBIDDEN_WORDS = (
+    "казино",
+    "криптовалюта",
+    "крипта",
+    "биржа",
+    "дешево",
+    "бесплатно",
+    "обман",
+    "полиция",
+    "радар",
+)
+# Максимальный размер файла изображения в Mb
+MAX_SIZE = 5

@@ -5,6 +5,13 @@ from blog.models import Article
 
 @admin.register(Article)
 class ArticleAdmin(admin.ModelAdmin):
-        list_display = ("id", "heading", "content", "created_at", "is_published", "views_counter")
-        list_filter = ("is_published",)
-        search_fields = ("heading", "content")
+    list_display = (
+        "id",
+        "heading",
+        "content",
+        "created_at",
+        "is_published",
+        "views_counter",
+    )
+    list_filter = ("is_published",)
+    search_fields = ("heading", "content")
