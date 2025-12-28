@@ -3,15 +3,10 @@ from django.db import models
 
 class Article(models.Model):
     heading = models.CharField(
-        max_length=64,
-        verbose_name="Заголовок",
-        help_text="Введите заголовок"
+        max_length=64, verbose_name="Заголовок", help_text="Введите заголовок"
     )
 
-    content = models.TextField(
-        verbose_name="Содержание",
-        help_text="Содержание статьи"
-    )
+    content = models.TextField(verbose_name="Содержание", help_text="Содержание статьи")
 
     preview = models.ImageField(upload_to="articles/photo", blank=True, null=True)
 
@@ -22,7 +17,7 @@ class Article(models.Model):
     views_counter = models.PositiveIntegerField(
         verbose_name="Счетчик просмотров",
         help_text="Укажите количество просмотров",
-        default=0
+        default=0,
     )
 
     class Meta:
