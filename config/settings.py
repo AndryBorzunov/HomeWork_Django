@@ -15,7 +15,8 @@ from dotenv import load_dotenv
 from pathlib import Path
 
 
-from django.conf.global_settings import STATICFILES_DIRS, MEDIA_URL
+from django.conf.global_settings import STATICFILES_DIRS, MEDIA_URL, AUTH_USER_MODEL, LOGIN_REDIRECT_URL, \
+    LOGOUT_REDIRECT_URL
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -46,6 +47,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "catalog",
     "blog",
+    "users",
 ]
 
 MIDDLEWARE = [
@@ -151,5 +153,21 @@ FORBIDDEN_WORDS = (
     "полиция",
     "радар",
 )
+
 # Максимальный размер файла изображения в Mb
 MAX_SIZE = 5
+
+AUTH_USER_MODEL = 'users.User'
+
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/'
+
+EMAIL_HOST = 'smtp.yandex.ru'
+EMAIL_PORT = 465
+EMAIL_HOST_USER = os.getenv("USR_EM")
+EMAIL_HOST_PASSWORD = os.getenv("PSW_EM")
+EMAIL_USE_TLS = False
+EMAIL_USE_SSL = True
+
+SERVER_EMAIL = EMAIL_HOST_USER
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
