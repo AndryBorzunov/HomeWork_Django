@@ -20,7 +20,7 @@ class ProductForm(StyleFormMixin, ModelForm):
 
     class Meta:
         model = Product
-        fields = "__all__"
+        exclude = ("owner",)
 
     def clean_name(self):
         name = self.cleaned_data.get("name")
@@ -45,13 +45,14 @@ class ProductForm(StyleFormMixin, ModelForm):
     def clean_photo(self):
         photo = self.cleaned_data.get("photo")
 
-        if photo.size > 1024 * 1024 * MAX_SIZE:
-            raise ValidationError(f"Размер фото превышает {MAX_SIZE} Мб")
+        if photo is not None:
+            if photo.size > 1024 * 1024 * MAX_SIZE:
+                raise ValidationError(f"Размер фото превышает {MAX_SIZE} Мб")
 
-        content_type = photo.content_type
-        if content_type not in ("image/jpeg", "image/webp", "image/png"):
-            raise ValidationError(
-                f"Формат файла не соответствует формату изображения {content_type}"
-            )
+            content_type = photo.content_type
+            if content_type not in ("image/jpeg", "image/webp", "image/png"):
+                raise ValidationError(
+                    f"Формат файла не соответствует формату изображения {content_type}"
+                )
 
         return photo

@@ -6,9 +6,11 @@
     <p class="lead">Skystore - это отличный вариант хранения ваших плагинов и примеров кода, который вы бы хотели
         продать
     </p>
+    {% if user.is_authenticated %}
     <p class="lead">
         <a class="btn btn-lg btn-block btn-outline-primary" href="{% url 'catalog:products_create' %}">Создать карточку</a>
     </p>
+    {% endif %}
 
 </div>
 <div class="row text-center">
@@ -24,11 +26,13 @@
                 <p class="card text">
                     {{ product.description | truncatechars:100 }}
                 </p>
+                {% if user.is_authenticated %}
                 <div class="btn-group">
                     <a class="btn btn-lg btn-block btn-outline-primary" href="{% url 'catalog:product_detail' product.pk %}">Купить</a>
                     <a class="btn btn-lg btn-block btn-outline-primary" href="{% url 'catalog:products_update' product.pk %}">Редактировать</a>
                     <a class="btn btn-lg btn-block btn-outline-primary" href="{% url 'catalog:products_delete' product.pk %}">Удалить</a>
                 </div>
+                {% endif %}
 
             </div>
         </div>
