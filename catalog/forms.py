@@ -6,19 +6,21 @@ from catalog.models import Product
 from config.settings import FORBIDDEN_WORDS, MAX_SIZE
 
 
-class ProductForm(ModelForm):
-
-    class Meta:
-        model = Product
-        fields = "__all__"
-
+class StyleFormMixin:
     def __init__(self, *args, **kwargs):
-        super(ProductForm, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         for field_name, field in self.fields.items():
             if isinstance(field, BooleanField):
                 field.widget.attrs["class"] = "form-check-input"
             else:
                 field.widget.attrs["class"] = "form-control"
+
+
+class ProductForm(StyleFormMixin, ModelForm):
+
+    class Meta:
+        model = Product
+        exclude = ("owner",)
 
     def clean_name(self):
         name = self.cleaned_data.get("name")
@@ -43,13 +45,14 @@ class ProductForm(ModelForm):
     def clean_photo(self):
         photo = self.cleaned_data.get("photo")
 
-        if photo.size > 1024 * 1024 * MAX_SIZE:
-            raise ValidationError(f"Размер фото превышает {MAX_SIZE} Мб")
+        if photo is not None:
+            if photo.size > 1024 * 1024 * MAX_SIZE:
+                raise ValidationError(f"Размер фото превышает {MAX_SIZE} Мб")
 
-        content_type = photo.content_type
-        if content_type not in ("image/jpeg", "image/webp", "image/png"):
-            raise ValidationError(
-                f"Формат файла не соответствует формату изображения {content_type}"
-            )
+            content_type = photo.content_type
+            if content_type not in ("image/jpeg", "image/webp", "image/png"):
+                raise ValidationError(
+                    f"Формат файла не соответствует формату изображения {content_type}"
+                )
 
         return photo
