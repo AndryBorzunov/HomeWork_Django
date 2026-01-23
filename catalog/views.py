@@ -56,7 +56,7 @@ class ProductDeleteView(DeleteView, LoginRequiredMixin):
 
     def form_valid(self, form):
         user = self.request.user
-        if user == self.object.owner or user.has_perm("catalog.can_delete_product"):
+        if user == self.object.owner or user.has_perm("catalog.delete_product"):
             return super().form_valid(form)
         raise PermissionDenied
 
