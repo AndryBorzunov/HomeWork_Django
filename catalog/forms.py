@@ -10,18 +10,21 @@ class StyleFormMixin(ModelForm):
         super().__init__(*args, **kwargs)
         for field_name, field in self.fields.items():
             if isinstance(field, BooleanField):
-                #field.widget.attrs.update({'class': 'form-check'})
-                field.widget.attrs['class'] = 'form-check-input'
-                #field.widget.attrs['input type'] = 'checkbox'
+                # field.widget.attrs.update({'class': 'form-check'})
+                field.widget.attrs["class"] = "form-check-input"
+                # field.widget.attrs['input type'] = 'checkbox'
             else:
-                field.widget.attrs['class'] = 'form-control'
+                field.widget.attrs["class"] = "form-control"
 
 
 class ProductForm(StyleFormMixin, ModelForm):
 
     class Meta:
         model = Product
-        exclude = ("owner", "is_published",)
+        exclude = (
+            "owner",
+            "is_published",
+        )
 
     def clean_name(self):
         name = self.cleaned_data.get("name")

@@ -59,7 +59,7 @@ class Product(models.Model):
         ordering = ["category", "name"]
         permissions = [
             ("can_unpublish_product", "can unpublish product"),
-            ("can_delete_product", "can delete product")
+            ("can_delete_product", "can delete product"),
         ]
 
     def __str__(self):
