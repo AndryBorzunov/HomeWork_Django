@@ -15,8 +15,13 @@ from dotenv import load_dotenv
 from pathlib import Path
 
 
-from django.conf.global_settings import STATICFILES_DIRS, MEDIA_URL, AUTH_USER_MODEL, LOGIN_REDIRECT_URL, \
-    LOGOUT_REDIRECT_URL
+from django.conf.global_settings import (
+    STATICFILES_DIRS,
+    MEDIA_URL,
+    AUTH_USER_MODEL,
+    LOGIN_REDIRECT_URL,
+    LOGOUT_REDIRECT_URL,
+)
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -157,12 +162,12 @@ FORBIDDEN_WORDS = (
 # Максимальный размер файла изображения в Mb
 MAX_SIZE = 5
 
-AUTH_USER_MODEL = 'users.User'
+AUTH_USER_MODEL = "users.User"
 
-LOGIN_REDIRECT_URL = '/'
-LOGOUT_REDIRECT_URL = '/'
+LOGIN_REDIRECT_URL = "/"
+LOGOUT_REDIRECT_URL = "/"
 
-EMAIL_HOST = 'smtp.yandex.ru'
+EMAIL_HOST = "smtp.yandex.ru"
 EMAIL_PORT = 465
 EMAIL_HOST_USER = os.getenv("USR_EM")
 EMAIL_HOST_PASSWORD = os.getenv("PSW_EM")
