@@ -1,3 +1,5 @@
+from unicodedata import category
+
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.core.exceptions import PermissionDenied
 from django.urls import reverse_lazy
@@ -12,10 +14,27 @@ from django.views.generic import (
 from catalog.forms import ProductForm, ProductModeratorForm
 
 from catalog.models import Product
+from catalog.services import get_products_from_cache, get_products_by_category
 
 
 class ProductListView(ListView):
     model = Product
+
+    def get_queryset(self):
+        return get_products_from_cache()
+
+
+class ProductByCategoryListView(ListView):
+    model = Product
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        product_category = context['products'][0].category
+        return product_category
+
+    def get_queryset(self):
+        product_category = self.get_context_data()
+        return get_products_by_category(product_category)
 
 
 class ProductDetailView(DetailView):
