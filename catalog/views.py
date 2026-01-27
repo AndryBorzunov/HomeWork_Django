@@ -23,24 +23,21 @@ class ProductListView(ListView):
     def get_context_data(self, *args, **kwargs):
         categories = Category.objects.all()
         products = get_products_from_cache()
-        context = { 'products_category': categories, 'object_list': products}
+        context = {"products_category": categories, "object_list": products}
         return context
 
 
 class ProductByCategoryListView(ListView):
     model = Product
 
-    categories = Category.objects.all()
-    context = { 'products_category': categories, }
-
     def get_context_data(self, *args, **kwargs):
         categories = Category.objects.all()
-        category_id = self.kwargs.get('category_id')
+        category_id = self.kwargs.get("category_id")
         products = get_products_by_category(category_id)
-        context = { 'products_category': categories, 'object_list': products}
+        context = {"products_category": categories, "object_list": products}
         return context
 
-    #def get_queryset(self):
+    # def get_queryset(self):
     #    category_id = self.kwargs.get('category_id')
     #    return get_products_by_category(category_id)
 

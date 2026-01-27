@@ -20,7 +20,8 @@ from django.conf.global_settings import (
     MEDIA_URL,
     AUTH_USER_MODEL,
     LOGIN_REDIRECT_URL,
-    LOGOUT_REDIRECT_URL, CACHES,
+    LOGOUT_REDIRECT_URL,
+    CACHES,
 )
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -179,8 +180,8 @@ DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 
 CACHE_ENABLED = True
 CACHES = {
-    'default': {
-        'BACKEND': 'django.core.cache.backends.redis.RedisCache',
-        'LOCATION': 'redis://127.0.0.1:6379/1',
+    "default": {
+        "BACKEND": "django.core.cache.backends.redis.RedisCache",
+        "LOCATION": "redis://127.0.0.1:6379/1",
     }
 }
