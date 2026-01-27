@@ -4,9 +4,9 @@ from config.settings import CACHE_ENABLED
 from catalog.models import Product
 
 
-def get_products_by_category(category_name):
+def get_products_by_category(category_id):
     """ Получение списка продуктов указанной категории """
-    return Product.objects.filter(category=category_name)
+    return Product.objects.filter(category_id=category_id)
 
 
 def get_products_from_cache():

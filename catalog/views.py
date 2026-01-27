@@ -13,28 +13,36 @@ from django.views.generic import (
 )
 from catalog.forms import ProductForm, ProductModeratorForm
 
-from catalog.models import Product
+from catalog.models import Product, Category
 from catalog.services import get_products_from_cache, get_products_by_category
 
 
 class ProductListView(ListView):
     model = Product
 
-    def get_queryset(self):
-        return get_products_from_cache()
+    def get_context_data(self, *args, **kwargs):
+        categories = Category.objects.all()
+        products = get_products_from_cache()
+        context = { 'products_category': categories, 'object_list': products}
+        return context
 
 
 class ProductByCategoryListView(ListView):
     model = Product
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        product_category = context['products'][0].category
-        return product_category
+    categories = Category.objects.all()
+    context = { 'products_category': categories, }
 
-    def get_queryset(self):
-        product_category = self.get_context_data()
-        return get_products_by_category(product_category)
+    def get_context_data(self, *args, **kwargs):
+        categories = Category.objects.all()
+        category_id = self.kwargs.get('category_id')
+        products = get_products_by_category(category_id)
+        context = { 'products_category': categories, 'object_list': products}
+        return context
+
+    #def get_queryset(self):
+    #    category_id = self.kwargs.get('category_id')
+    #    return get_products_by_category(category_id)
 
 
 class ProductDetailView(DetailView):
